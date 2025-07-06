@@ -1,0 +1,315 @@
+* {
+    box-sizing: border-box;
+}
+
+.inactive {
+    display: none;
+}
+
+#board {
+    /* height: 680px;
+    width: 1000px; */
+    height: 95vh;
+    width: 95vw;
+    background-color: black;
+    display: grid;
+    grid-template-areas:
+        "b b b c c"
+        "b b b c c"
+        "d d d c c"
+        "d d d c c"
+        "e e e c c"
+        "e e e c c"
+        "e e e c c";
+}
+
+.box {
+    background-color: steelblue;
+    height: 50px;
+    width: 50px;
+    /* margin: 5px 10px; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+}
+
+#offer {
+    grid-area: b;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    /* width: 800px;
+    height: 100px; */
+    /* grid-column-start: 2;
+    grid-column-end: 3; */
+}
+
+#offer div {
+    background-color: dimgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    height: 70px;
+    width: 500px;
+    margin: 5px 10px;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+}
+
+#boxes {
+    grid-area: d;
+    border: 2px solid orange;
+    display: grid;
+    grid-template: repeat(8, 60px) / repeat(3, 60px);
+    /* grid-auto-rows: 20px; */
+    /* padding: 50px; */
+    /* column-gap: 20px; */
+    /* row-gap: 0; */
+    margin: 0 auto;
+    padding: 5px;
+
+    /* grid-area: d;
+    border: 2px solid orange;
+    display: grid;
+    grid-template: repeat(3, 100px) / repeat(3, 100px); */
+    /* grid-auto-rows: 20px; */
+    /* padding: 50px; */
+    /* column-gap: 20px;
+    row-gap: 20px;
+    margin: 0 auto;
+    padding-top: 50px; */
+    /* width: 800px;
+    height: 300px; */
+    /* grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2; */
+}
+
+#boxes .box {
+    /* height: 35px;
+    width: 35px; */
+    background-color: coral;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: black;
+    border: 2px solid aliceblue;
+}
+
+#tracking {
+    grid-area: c;
+    border: 2px solid green;
+    display: grid;
+    grid-template: repeat(12, 40px) / repeat(2, 160px);
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin: 50px auto;
+
+    /* grid-area: c;
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    /* height: 450px;
+    width: 190px; */
+    /* grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2; */
+}
+
+#tracking div {
+    background-color: steelblue;
+    /* height: 40px;
+    width: 200px; */
+    height: 30px;
+    width: 150px;
+    margin: 5px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+}
+
+#tracking .gone {
+    background-color: gray;
+    color: black;
+    border: 2px solid lightgray;
+}
+
+
+#player {
+    grid-area: e;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#to-pick {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    height: 80px;
+    width: 150px;
+    margin: 5px 10px;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+}
+
+#guesses {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#guesses div {
+    background-color: steelblue;
+    height: 50px;
+    width: 50px;
+    margin: 5px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+}
+
+#guess-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#guess-box div {
+    background-color: lavender;
+    height: 60px;
+    width: 60px;
+    margin: 5px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: black;
+    border: 2px solid aliceblue;
+}
+
+.modal {
+    z-index: 1;
+    position: absolute;
+    height: 95vh;
+    width: 95vw;
+    /* height: 100%;
+    width: 100%; */
+}
+
+.clear {
+    background-color: rgba(1, 1, 1, 0%);
+}
+
+.dark {
+    background-color: rgba(0, 0, 0, 50%);
+}
+
+
+
+#reveal-box {
+    max-height: 400px;
+    max-width: 500px;
+    margin: 150px auto;
+    background-color: gray;
+    border: 2px solid lightgreen;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 20px 0;
+}
+
+/*style from .guesses div...*/
+#reveal-box .box {
+    background-color: steelblue;
+    /* height: 60px;
+    width: 60px; */
+    margin: 5px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+}
+
+#reveal-box .revealed {
+    background-color: mediumseagreen;
+    /* height: 60px; */
+    width: 110px;
+}
+
+#offer-choice {
+    max-height: 400px;
+    max-width: 500px;
+    margin: 250px auto;
+    background-color: gray;
+    border: 2px solid lightgreen;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 20px 0;
+}
+
+#gameover {
+    max-height: 400px;
+    max-width: 500px;
+    margin: 250px auto;
+    background-color: gray;
+    border: 2px solid lightgreen;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 20px 0;
+}
+
+#take-box {
+    max-height: 400px;
+    max-width: 500px;
+    margin: 250px auto;
+    background-color: gray;
+    border: 2px solid lightgreen;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 20px 0;
+}
+
+h1 {
+    color: whitesmoke;
+}
