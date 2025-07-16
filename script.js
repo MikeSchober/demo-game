@@ -175,7 +175,7 @@ revealBox.addEventListener('click', (e) => {
         //logic to make offer and show next round guesses required
         //---10 second delay??? (add css animation???)
 
-        offerValue = 10000;
+        offerValue = calculateOffer(prizesRemaining);
 
         //creates and appends offer to ui
         const newDiv = document.createElement('div');
@@ -225,35 +225,92 @@ revealBox.addEventListener('click', (e) => {
 //takes prizesRemaining array as arg
 function calculateOffer(a) {
 
-    const offerCalc = [(arr) => {
+    ///////
+    //median calulation
 
-        //low value offer
-        //median * 1.25
+    let median;
+    let mid;
 
-    },
-    (arr) => {
+    if (a.length % 2 === 0) {
+        //in this case, median is avg of middle two nums (a.length/2 and a.length/2 -1)
+        mid = a.length / 2;
 
-        //medium value offer
-        //avg minus median
+        //avg of both middle nums
+        median = ((a[mid] + a[(mid - 1)]) / 2);
 
-    },
-    (arr) => {
+    } else {
+        //in this case, median is the middle number
+        mid = Math.floor(a.length / 2);
+        median = a[mid];
+    };
+    console.log(`median:`)
+    console.log(median);
 
-        //high value offer
-        //avg + avg*0.2
+    //end median calculation
+    ///////
 
-    },
-    (arr) => {
+    ///////
+    //avg calc
 
-        //wildcard medium to high value offer
-        //random value between index 2 and 5 (when a.length >=6)
+    let avg;
+    let ttl = 0;
 
-    },
-    ];
+    for (let x = 0; x < a.length; x++) {
+        ttl += a[x];
+    };
 
-    //choose random index of offerCalc and pass-in a, giving us a random-value for each offer
+    avg = (ttl / a.length);
+
+    console.log(`avg ${avg}`)
+    //end avg calc
+    ///////
+
+    ///////
+    //wildcard random offer value calc, when a.length >=6
+    //choosing a value between the values of index 2 and index 5...
+    let randOffer;
+    if (a.length >= 6) {
+        randOffer = Math.floor((Math.random() * (a[5] - a[2] + 1)) + a[2]);
+        console.log(`randoffer ${randOffer}`)
+    };
+
+    //end wildcard random offer value calc
+    ///////
+
+    //populate an array with four offers of varying values, then choose an offer randomly from the array
+    let allOffers;
+
+    if (randOffer) {
+        allOffers = [median * (1.25), (avg - median), (avg + avg * (0.2)), randOffer];
+    } else {
+        allOffers = [median * (1.25), (avg - median), (avg + avg * (0.2))];
+    };
+
+    for (let all of allOffers) {
+        console.log(all)
+    };
+    //offer calculations...
+    //low value offer
+    //median * 1.25
+
+    //medium value offer
+    //avg minus median
+
+    //high value offer
+    //avg + avg*0.2
+
+    //wildcard medium to high value offer
+    //random value between index 2 and 5 (when a.length >=6)
+
+
+    //choose random index of allOffers
+    let randIndex = Math.floor((Math.random() * a.length));
+    console.log(`rand ind: ${randIndex}`)
+
+    console.log(`offer: ${allOffers[randIndex]}`)
 
     //return the offer value
+    return allOffers[randIndex];
 
 };
 
