@@ -4,6 +4,9 @@
 // let prizes = [1000000, 500000, 250000, 100000, 10000, 1000, 100, 5, 1];
 let prizes = [1000000, 750000, 500000, 250000, 150000, 100000, 75000, 50000, 25000, 15000, 10000, 7500, 5000, 2500, 2000, 1500, 1000, 500, 100, 50, 25, 10, 5, 1];
 
+//holds array to track remaining gameboard values
+let prizesRemaining = [1000000, 750000, 500000, 250000, 150000, 100000, 75000, 50000, 25000, 15000, 10000, 7500, 5000, 2500, 2000, 1500, 1000, 500, 100, 50, 25, 10, 5, 1];
+
 //holds value of current offer
 let offerValue;
 
@@ -141,6 +144,9 @@ revealBox.addEventListener('click', (e) => {
         //using index of prize value in prizes array to determine which index of the trackingValues NodeList we need to grayout for taken value
         trackingValues[prizes.indexOf(boxMap.get(e.target.id))].classList.add('gone');
 
+        //updates array of values remaining on the gameboard
+        prizesRemaining.splice(prizesRemaining.indexOf(boxMap.get(e.target.id)), 1);
+
         //checks for unrevealed boxes and sets allRevealed to false if there are any
         for (let r of revealBox.children) {
             (r.tagName === 'DIV' && !r.classList.contains('revealed')) && (allRevealed = false);
@@ -216,10 +222,38 @@ revealBox.addEventListener('click', (e) => {
 //logic to calulate offer value for display on the ui (based on values left)
 //---several different calculation methods (randomized for variability???)
 //-------could randomize by putting calculation logic in an array, choosing random index of array for use in calculation
-function calculateOffer() {
+//takes prizesRemaining array as arg
+function calculateOffer(a) {
 
+    const offerCalc = [(arr) => {
 
+        //low value offer
+        //median * 1.25
 
+    },
+    (arr) => {
+
+        //medium value offer
+        //avg minus median
+
+    },
+    (arr) => {
+
+        //high value offer
+        //avg + avg*0.2
+
+    },
+    (arr) => {
+
+        //wildcard medium to high value offer
+        //random value between index 2 and 5 (when a.length >=6)
+
+    },
+    ];
+
+    //choose random index of offerCalc and pass-in a, giving us a random-value for each offer
+
+    //return the offer value
 
 };
 
