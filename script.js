@@ -302,9 +302,12 @@ function calculateOffer(a) {
     //wildcard medium to high value offer
     //random value between index 2 and 5 (when a.length >=6)
 
+    //need to add in low-side and high-side limits
+    //median*1.25 looks low... may need to adjust
+
 
     //choose random index of allOffers
-    let randIndex = Math.floor((Math.random() * a.length));
+    let randIndex = Math.floor((Math.random() * allOffers.length));
     console.log(`rand ind: ${randIndex}`)
 
     console.log(`offer: ${allOffers[randIndex]}`)
@@ -373,6 +376,10 @@ function buildGame() {
     //after all prize values assigned, prizes array re-populated for reference in other parts on the logic
     // prizes = [1000000, 500000, 250000, 100000, 10000, 1000, 100, 5, 1];
     prizes = [1000000, 750000, 500000, 250000, 150000, 100000, 75000, 50000, 25000, 15000, 10000, 7500, 5000, 2500, 2000, 1500, 1000, 500, 100, 50, 25, 10, 5, 1];
+
+
+    //reset prizes remaining array
+    prizesRemaining = [1000000, 750000, 500000, 250000, 150000, 100000, 75000, 50000, 25000, 15000, 10000, 7500, 5000, 2500, 2000, 1500, 1000, 500, 100, 50, 25, 10, 5, 1];
 
     //reset offer array and finaloffer boolean and initial boolean
     offers = [];
